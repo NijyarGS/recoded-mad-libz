@@ -26,10 +26,32 @@
  * There are multiple ways to do this, but you may want to use regular expressions.
  * Please go through this lesson: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/
  */
+ 
+
+
 function parseStory(rawStory) {
   // Your code here.
+  
+  return fetch("story.txt")
+  .then(response => response.text())
+  .then(data => {
+
+    const myWords = data.split(" ");
+    
+    const PARSING_REGEX = /(?<word>\w+)(?<pos>\[[nva]\])?(?<punct>[\,\.])?/
+    
+    let myWordsGroup =  myWords.map((e)=>{
+      return PARSING_REGEX.exec(e).groups
+    })
+
+    return myWordsGroup;
+
+  }
+    )
+
   return {}; // This line is currently wrong :)
 }
+
 
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
@@ -45,5 +67,83 @@ function parseStory(rawStory) {
 getRawStory()
   .then(parseStory)
   .then((processedStory) => {
+    const madLibsEdit = document.querySelector('.madLibsEdit');
+    const madLibsPreview = document.querySelector('.madLibsPreview')
+
+
+    //////////////////////////////////////// madLibsPreview //////////////////////////////////////////////////
+    processedStory.forEach((items)=>{
+
+      let span = document.createElement('span') 
+
+      span.innerHTML = items.word;
+
+      if (items.pos !== undefined)
+      {
+        span.id = `${items.word}${items.pos}`
+        span.innerHTML = "" 
+        items.word.split('').forEach(()=>{span.innerHTML = span.innerHTML+ "_"})
+      }
+      if (items.punct !== undefined)
+      {
+        span.innerHTML = span.innerHTML + items.punct;
+      }
+      
+      span.innerHTML = span.innerHTML + " ";
+      madLibsPreview.appendChild(span);
+    });
+    
+
+//////////////////////////////////////// madLibsEdit //////////////////////////////////////////////////
+    processedStory.forEach((items,lpNum)=> {
+
+      if (items.pos === undefined)
+      {
+        let span = document.createElement('span') 
+
+        span.innerHTML = items.word;
+
+        if (items.punct !== undefined)
+      {
+        span.innerHTML = span.innerHTML + items.punct;
+      }
+
+      span.innerHTML = span.innerHTML + " ";
+
+      madLibsEdit.appendChild(span)
+      }
+
+      else if (items.pos !== undefined)
+      {
+        let input = document.createElement('input');
+
+        input.type="text"
+        input.placeholder = `${items.word}${items.pos}`;
+        input.id=lpNum;
+        
+        input.addEventListener('input', ()=>{
+          let mySel = document.getElementById(`${items.word}${items.pos}`);
+            mySel.innerHTML = input.value;
+            mySel.innerHTML = mySel.innerHTML + " ";
+            mySel.className='glow'
+        });
+
+        madLibsEdit.appendChild(input)
+
+        if (items.punct !== undefined)
+        {
+          let span = document.createElement('span')
+          span.innerHTML = items.punct;
+          span.innerHTML = span.innerHTML + " ";
+          madLibsEdit.appendChild(span)
+        }
+        
+        //////////for this to work you most rewrite it to post a input here instead of span
+      }
+
+      
+
+    });
+    
     console.log(processedStory);
   });

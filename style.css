@@ -1,3 +1,36 @@
 /**
  * Your CSS goes here.
  */
+
+ body  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+ }
+
+ body > div {
+    background-color: rgb(211, 130, 23);
+    width: 80%;
+    padding: 1rem;
+    border: 2px solid rgb(95, 66, 34);
+ }
+ .madLibsEdit {
+    
+ }
+ .madLibsEdit input {
+    border-radius: 2rem;
+    border-style: solid;
+    padding: 0.3rem;
+ }
+
+ .madLibsPreview {
+font-size: large;
+font-weight:bold;
+ }
+
+ .glow {
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 3px rgb(0, 0, 0) ;
+ }
