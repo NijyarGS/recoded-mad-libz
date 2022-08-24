@@ -95,8 +95,10 @@ getRawStory()
     
 
 //////////////////////////////////////// madLibsEdit //////////////////////////////////////////////////
+let inpId = 0;
     processedStory.forEach((items,lpNum)=> {
-
+      
+      //////// if NOT a input word /////////
       if (items.pos === undefined)
       {
         let span = document.createElement('span') 
@@ -113,20 +115,43 @@ getRawStory()
       madLibsEdit.appendChild(span)
       }
 
+      //////// if IS a input word /////////
       else if (items.pos !== undefined)
       {
+        inpId=inpId+1;
         let input = document.createElement('input');
 
         input.type="text"
         input.placeholder = `${items.word}${items.pos}`;
-        input.id=lpNum;
+        input.id=inpId;
         
         input.addEventListener('input', ()=>{
           let mySel = document.getElementById(`${items.word}${items.pos}`);
+          if (input.value.length <= 20) {
             mySel.innerHTML = input.value;
             mySel.innerHTML = mySel.innerHTML + " ";
             mySel.className='glow'
+            }
+            else {
+              console.log("above 20")
+          }
+
+          if (mySel.innerHTML===" ")
+          {
+            console.log('empty')
+          }
         });
+        
+        input.addEventListener('keydown', (e)=>{
+          if (e.key==='Enter')
+          {
+            detect = parseInt(input.id)+1
+            // console.log(detect)
+            // console.log (document.getElementById(`${detect}`))
+            document.getElementById(`${detect}`).focus()
+            
+          }
+        })
 
         madLibsEdit.appendChild(input)
 
@@ -138,7 +163,6 @@ getRawStory()
           madLibsEdit.appendChild(span)
         }
         
-        //////////for this to work you most rewrite it to post a input here instead of span
       }
 
       

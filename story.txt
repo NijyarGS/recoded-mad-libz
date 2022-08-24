@@ -1,3 +1,14 @@
-Louis[n] went[v] to the store[n], and it was fun[a]. He taught[v] the class[n].
-The abbreviation[n] "n" means[v] noun. We use[v] the letter[n] "v" for verbs.
-And for "a", you can[v] make a good[a] guess.
+I met a Traveller[n] from an antique[a] land[n] 
+Who said: “Two vast[a] and trunkless[a] legs[n] of stone 
+Stand in the desart[a]. Near them, on the sand[n], 
+Half sunk, a shattered[a] visage lies, whose frown[v], 
+And wrinkled lip, and sneer of cold[a] command[n], 
+Tell that its sculptor[n] well those passions read 
+Which yet survive[v], stamped on these lifeless[a] things, 
+The hand[n] that mocked[v] them, and the heart that fed: 
+And on the pedestal[n] these words appear: 
+“My name is Ozymandias[n], King[n] of Kings[n].” 
+Look on my works ye Mighty[n], and despair[v]! 
+No thing beside remains. Round the decay 
+Of that Colossal Wreck, boundless and bare 
+The lone and level sands[n] stretch far away.

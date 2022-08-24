@@ -5,7 +5,6 @@
  body  {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 2rem;
  }
@@ -16,18 +15,36 @@
     padding: 1rem;
     border: 2px solid rgb(95, 66, 34);
  }
+
  .madLibsEdit {
-    
+    font-size: large;
  }
+
+ .madLibsEdit > * {
+   margin: 4px 0px;
+ }
+
  .madLibsEdit input {
     border-radius: 2rem;
     border-style: solid;
     padding: 0.3rem;
+    margin-right: 2px;
  }
 
  .madLibsPreview {
+   font-family:'fantasy';
+   font-style:italic;
 font-size: large;
 font-weight:bold;
+width: 600px;
+padding: 20px;
+ }
+
+ .madLibsPreview > * {
+   display: inline-block;
+   padding: 10px 0px ;
+   padding-right:7px ;
+   
  }
 
  .glow {
